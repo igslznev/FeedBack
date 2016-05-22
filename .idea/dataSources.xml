@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="751646079">
-    <data-source source="LOCAL" name="MySQL - FeedBack@localhost" uuid="96c5da7b-776b-4432-ac14-ff9730318659">
+  <component name="DataSourceManagerImpl" format="xml" hash="36352129">
+    <data-source source="LOCAL" name="MySQL - FeedBackDB@localhost" uuid="9674ccc2-1cf0-43b5-a644-479adac267d9">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/FeedBack</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/FeedBackDB</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
