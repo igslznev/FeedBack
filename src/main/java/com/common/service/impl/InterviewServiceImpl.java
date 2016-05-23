@@ -1,11 +1,11 @@
 package com.common.service.impl;
 
 import com.common.model.Interview;
+import com.common.model.Question;
 import com.common.repository.InterviewRepository;
-import com.common.repository.QuestionRepository;
-import com.common.repository.VariantRepository;
 import com.common.service.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +16,9 @@ public class InterviewServiceImpl implements InterviewService {
     @Autowired
     private InterviewRepository interviewRepository;
 
+    @Autowired
+    private QuestionServiceImpl questionService;
+
     @Override
     public Interview addInterview(Interview interview) {
         return interviewRepository.saveAndFlush(interview);
@@ -23,6 +26,13 @@ public class InterviewServiceImpl implements InterviewService {
 
     @Override
     public void delete(int id) {
+        List<Question> questions = questionService.findByIdInterview(id);
+        //Delete of all questions
+        for (Question question:
+             questions) {
+            questionService.delete(question.getIdQuestion());
+        }
+
         interviewRepository.delete(id);
     }
 

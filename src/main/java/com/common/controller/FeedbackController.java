@@ -8,12 +8,10 @@ import java.util.Map;
 @Controller
 public class FeedbackController {
 
-
-
     @RequestMapping("/")
     public String initializeForm(Map model)
     {
-        return "feedback";
+        return "createInterview";
 
     }
 

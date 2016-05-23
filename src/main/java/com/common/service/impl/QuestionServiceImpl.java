@@ -1,11 +1,14 @@
 package com.common.service.impl;
 
+import com.common.model.Answer;
 import com.common.model.Question;
+import com.common.model.Variant;
 import com.common.repository.InterviewRepository;
 import com.common.repository.QuestionRepository;
 import com.common.repository.VariantRepository;
 import com.common.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +19,12 @@ public class QuestionServiceImpl implements QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private AnswerServiceImpl answerService;
+
+    @Autowired
+    private VariantServiceImpl variantService;
+
     @Override
     public Question addQuestion(Question question) {
         return questionRepository.saveAndFlush(question);
@@ -23,6 +32,21 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void delete(int id) {
+
+        List<Answer> answers = answerService.findByIdQuestion(id);
+        //Delete of all answers
+        for (Answer answer:
+             answers) {
+            answerService.delete(answer.getIdAnswer());
+        }
+
+        List<Variant> variants = variantService.findByIdQuestion(id);
+        //Delete of all variant
+        for (Variant variant:
+                variants) {
+            answerService.delete(variant.getIdVariant());
+        }
+
         questionRepository.delete(id);
     }
 
