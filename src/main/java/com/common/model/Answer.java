@@ -2,16 +2,16 @@ package com.common.model;
 
 
 import javax.persistence.*;
-import java.sql.*;
+import java.sql.Time;
 
 @Entity
 @Table(name = "Answer")
 public class Answer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idAnswer")
-    private int idAnswer;
+    private Long idAnswer;
 
     @ManyToOne
     @JoinColumn(name = "idUser")
@@ -26,6 +26,13 @@ public class Answer {
 
     @Column(name = "time")
     Time time;
+//    **Time of answer**
+//    public class MyEntity {
+//        ...
+//        @Temporal(TemporalType.TIMESTAMP)
+//        private java.util.Date myDate;
+//        ...
+//    }
 
     public User getUser() {
         return user;
@@ -59,11 +66,11 @@ public class Answer {
         this.time = time;
     }
 
-    public int getIdAnswer() {
+    public Long getIdAnswer() {
         return idAnswer;
     }
 
-    public void setIdAnswer(int idAnswer) {
+    public void setIdAnswer(Long idAnswer) {
         this.idAnswer = idAnswer;
     }
 }

@@ -9,14 +9,14 @@ public class Variant {
     public Variant() {
     }
 
-    public Variant(String variant, Question question){
+    public Variant(String variant){
         this.variant = variant;
-        this.question = question;
     }
+
     @Id
     @GeneratedValue
     @Column(name = "idVariant")
-    private int idVariant;
+    private Long idVariant;
 
     @Column(name = "variant")
     private String variant;
@@ -25,11 +25,11 @@ public class Variant {
     @JoinColumn(name = "idQuestion")
     private Question question;
 
-    public int getIdVariant() {
+    public Long getIdVariant() {
         return idVariant;
     }
 
-    public void setIdVariant(int idVariant) {
+    public void setIdVariant(Long idVariant) {
         this.idVariant = idVariant;
     }
 

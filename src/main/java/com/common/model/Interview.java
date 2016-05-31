@@ -1,10 +1,9 @@
 package com.common.model;
 
-import org.hibernate.annotations.ForeignKey;
-
 import javax.persistence.*;
-import java.sql.*;
+import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Interview")
@@ -23,9 +22,9 @@ public class Interview {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idInterview")
-    private int idInterview;
+    private Long idInterview;
 
     @Column(name = "title")
     private String title;
@@ -38,20 +37,28 @@ public class Interview {
     private User creator;
 
     @Column(name = "startTime")
-    private Time startTime;
+    private Date startTime;
 
     @Column(name = "finishTime")
-    private Time finishTime;
+    private Date finishTime;
 
-    public void addQuestion(Question question) {
-        question.setInterview(this);
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "idInterview")
+    private Set<Question> questions;
+
+    public Set<Question> getQuestions() {
+        return questions;
     }
 
-    public int getIdInterview() {
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
+    }
+
+    public Long getIdInterview() {
         return idInterview;
     }
 
-    public void setIdInterview(int idInterview) {
+    public void setIdInterview(Long idInterview) {
         this.idInterview = idInterview;
     }
 
@@ -71,19 +78,19 @@ public class Interview {
         this.description = description;
     }
 
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getFinishTime() {
+    public Date getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Time finishTime) {
+    public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
     }
 

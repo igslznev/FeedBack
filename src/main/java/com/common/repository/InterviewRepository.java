@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InterviewRepository extends JpaRepository<Interview, Integer> {
+public interface InterviewRepository extends JpaRepository<Interview, Long> {
 
-    List<Interview> findByCreator_IdUser(int idUser);
+    List<Interview> findByCreator_IdUser(Long idUser);
 
 }

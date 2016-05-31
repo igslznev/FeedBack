@@ -5,12 +5,11 @@ import com.common.model.Question;
 import com.common.repository.InterviewRepository;
 import com.common.service.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("InterviewServiceImpl")
 public class InterviewServiceImpl implements InterviewService {
 
     @Autowired
@@ -25,7 +24,7 @@ public class InterviewServiceImpl implements InterviewService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         List<Question> questions = questionService.findByIdInterview(id);
         //Delete of all questions
         for (Question question:
@@ -37,7 +36,7 @@ public class InterviewServiceImpl implements InterviewService {
     }
 
     @Override
-    public Interview getById(int id) {
+    public Interview getById(Long id) {
         return interviewRepository.getOne(id);
     }
 
@@ -52,7 +51,7 @@ public class InterviewServiceImpl implements InterviewService {
     }
 
     @Override
-    public List<Interview> findByIdCreator(int id) {
+    public List<Interview> findByIdCreator(Long id) {
         return interviewRepository.findByCreator_IdUser(id);
     }
 

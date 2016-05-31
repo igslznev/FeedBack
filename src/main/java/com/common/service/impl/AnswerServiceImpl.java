@@ -4,12 +4,11 @@ import com.common.model.Answer;
 import com.common.repository.AnswerRepository;
 import com.common.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("AnswerServiceImpl")
 public class AnswerServiceImpl implements AnswerService {
 
     @Autowired
@@ -21,12 +20,12 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         answerRepository.delete(id);
     }
 
     @Override
-    public Answer getById(int id) {
+    public Answer getById(Long id) {
         return answerRepository.getOne(id);
     }
 
@@ -41,7 +40,7 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public List<Answer> findByIdQuestion(int id) {
+    public List<Answer> findByIdQuestion(Long id) {
         return answerRepository.findByQuestion_IdQuestion(id);
     }
 

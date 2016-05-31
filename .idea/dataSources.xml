@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="36352129">
-    <data-source source="LOCAL" name="MySQL - FeedBackDB@localhost" uuid="9674ccc2-1cf0-43b5-a644-479adac267d9">
+  <component name="DataSourceManagerImpl" format="xml" hash="4207994642">
+    <data-source source="LOCAL" name="MySQL - FeedBackDB@localhost" uuid="7004eb72-cf74-40a1-a16d-1a03872cdaef">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

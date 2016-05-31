@@ -1,28 +1,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: igor
-  Date: 11.05.16
-  Time: 16:15
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>FeedBack</title>
 </head>
 <body>
-<form:form method="post" commandName="ca">
 
-<table>
-    <tr>
-        <td>${questionText}</td>
-        <td>
-            <form:checkboxes path="answers" items="${answersList}"/>
-        </td>
-    </tr>
-</table>
+    <c:choose>
+        <c:when test="${interviews.size() == 0}">There is no interview!</c:when>
+        <c:otherwise>
+            <c:forEach items="${interviews}" var="interview">
+                <link href="{${interview.getId()}}">${interview.getTitle()}<link/>
 
-</form:form>
+                    <br>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+
 </body>
 </html>

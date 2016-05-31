@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface QuestionService {
     Question addQuestion(Question question);
-    void delete(int id);
-    Question getById(int id);
+    void delete(Long id);
+    Question getById(Long id);
     Question editQuestion(Question question);
     List<Question> getAll();
-    List<Question> findByIdInterview(int id);
+    List<Question> findByIdInterview(Long id);
 }

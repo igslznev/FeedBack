@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface VariantRepository extends JpaRepository<Variant, Integer> {
+public interface VariantRepository extends JpaRepository<Variant, Long> {
 
-    List<Variant> findByQuestion_IdQuestion(int idQuestion);
+    List<Variant> findByQuestion_IdQuestion(Long idQuestion);
 
 }

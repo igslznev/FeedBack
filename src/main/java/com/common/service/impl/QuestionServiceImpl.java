@@ -3,17 +3,14 @@ package com.common.service.impl;
 import com.common.model.Answer;
 import com.common.model.Question;
 import com.common.model.Variant;
-import com.common.repository.InterviewRepository;
 import com.common.repository.QuestionRepository;
-import com.common.repository.VariantRepository;
 import com.common.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("QuestionServiceImpl")
 public class QuestionServiceImpl implements QuestionService {
 
     @Autowired
@@ -31,7 +28,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
 
         List<Answer> answers = answerService.findByIdQuestion(id);
         //Delete of all answers
@@ -51,7 +48,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getById(int id) {
+    public Question getById(Long id) {
         return questionRepository.getOne(id);
     }
 
@@ -66,7 +63,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> findByIdInterview(int id) {
+    public List<Question> findByIdInterview(Long id) {
         return questionRepository.findByInterview_IdInterview(id);
     }
 }

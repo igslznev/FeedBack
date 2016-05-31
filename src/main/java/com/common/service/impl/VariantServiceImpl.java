@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("VariantService")
 public class VariantServiceImpl implements VariantService {
 
     @Autowired
@@ -21,12 +21,12 @@ public class VariantServiceImpl implements VariantService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         variantRepository.delete(id);
     }
 
     @Override
-    public Variant getById(int id) {
+    public Variant getById(Long id) {
         return variantRepository.getOne(id);
     }
 
@@ -41,7 +41,7 @@ public class VariantServiceImpl implements VariantService {
     }
 
     @Override
-    public List<Variant> findByIdQuestion(int id) {
+    public List<Variant> findByIdQuestion(Long id) {
         return variantRepository.findByQuestion_IdQuestion(id);
     }
 

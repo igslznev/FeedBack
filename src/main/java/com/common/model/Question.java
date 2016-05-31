@@ -1,7 +1,7 @@
 package com.common.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Question")
@@ -12,7 +12,7 @@ public class Question {
 
     public Question(String question, boolean required,
                     Interview interview, TypeOfQuestion type,
-                    List<Variant> variants){
+                    Set<Variant> variants){
         this.question = question;
         this.required = required;
         this.interview = interview;
@@ -25,9 +25,9 @@ public class Question {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idQuestion")
-    private int idQuestion;
+    private Long idQuestion;
 
     @Column(name = "question")
     private String question;
@@ -40,18 +40,26 @@ public class Question {
     private Interview interview;
 
     @ManyToOne
-    @JoinColumn(name = "type")
+    @JoinColumn(name = "idType")
     private TypeOfQuestion type;
 
-    public void addVariant(Variant variant){
-        variant.setQuestion(this);
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="idQuestion")
+    Set<Variant> variants;
+
+    public Set<Variant> getVariants() {
+        return variants;
     }
 
-    public int getIdQuestion() {
+    public void setVariants(final Set<Variant> variants) {
+        this.variants = variants;
+    }
+
+    public Long getIdQuestion() {
         return idQuestion;
     }
 
-    public void setIdQuestion(int idQuestion) {
+    public void setIdQuestion(Long idQuestion) {
         this.idQuestion = idQuestion;
     }
 
@@ -86,4 +94,5 @@ public class Question {
     public void setType(TypeOfQuestion type) {
         this.type = type;
     }
+
 }
