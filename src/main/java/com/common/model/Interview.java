@@ -42,7 +42,7 @@ public class Interview {
     @Column(name = "finishTime")
     private Date finishTime;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "idInterview")
     private Set<Question> questions;
 

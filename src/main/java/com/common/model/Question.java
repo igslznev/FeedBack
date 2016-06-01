@@ -43,7 +43,7 @@ public class Question {
     @JoinColumn(name = "idType")
     private TypeOfQuestion type;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="idQuestion")
     Set<Variant> variants;
 
