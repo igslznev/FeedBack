@@ -49,7 +49,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getById(Long id) {
-        return questionRepository.getOne(id);
+        return questionRepository.findOne(id);
     }
 
     @Override

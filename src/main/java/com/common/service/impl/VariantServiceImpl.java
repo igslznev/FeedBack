@@ -27,7 +27,7 @@ public class VariantServiceImpl implements VariantService {
 
     @Override
     public Variant getById(Long id) {
-        return variantRepository.getOne(id);
+        return variantRepository.findOne(id);
     }
 
     @Override

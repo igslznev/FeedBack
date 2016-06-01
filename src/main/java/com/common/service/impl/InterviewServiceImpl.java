@@ -6,6 +6,7 @@ import com.common.repository.InterviewRepository;
 import com.common.service.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class InterviewServiceImpl implements InterviewService {
 
     @Override
     public Interview getById(Long id) {
-        return interviewRepository.getOne(id);
+        return interviewRepository.findOne(id);
     }
 
     @Override
