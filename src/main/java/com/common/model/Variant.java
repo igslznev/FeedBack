@@ -48,4 +48,6 @@ public class Variant {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
+    public String toString() { return variant; }
 }

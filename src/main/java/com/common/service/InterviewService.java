@@ -12,5 +12,4 @@ public interface InterviewService {
     Interview getById(Long id);
     Interview editInterview(Interview interview);
     List<Interview> getAll();
-    List<Interview> findByIdCreator(Long id);
 }

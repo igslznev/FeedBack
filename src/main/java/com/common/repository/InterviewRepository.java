@@ -8,7 +8,4 @@ import java.util.List;
 
 @Repository
 public interface InterviewRepository extends JpaRepository<Interview, Long> {
-
-    List<Interview> findByCreator_IdUser(Long idUser);
-
 }

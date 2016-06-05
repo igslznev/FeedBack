@@ -50,11 +50,4 @@ public class InterviewServiceImpl implements InterviewService {
     public List<Interview> getAll() {
         return interviewRepository.findAll();
     }
-
-    @Override
-    public List<Interview> findByIdCreator(Long id) {
-        return interviewRepository.findByCreator_IdUser(id);
-    }
-
-
 }

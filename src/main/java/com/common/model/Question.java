@@ -1,6 +1,7 @@
 package com.common.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -45,13 +46,13 @@ public class Question {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="idQuestion")
-    Set<Variant> variants;
+    List<Variant> variants;
 
-    public Set<Variant> getVariants() {
+    public List<Variant> getVariants() {
         return variants;
     }
 
-    public void setVariants(final Set<Variant> variants) {
+    public void setVariants(final List<Variant> variants) {
         this.variants = variants;
     }
 

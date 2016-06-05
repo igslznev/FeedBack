@@ -2,11 +2,18 @@ package com.common.model;
 
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "Answer")
 public class Answer {
+
+    public Answer() {}
+
+    public Answer(Question question, Timestamp time) {
+        this.question = question;
+        this.time = time;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +29,10 @@ public class Answer {
     private Question question;
 
     @Column(name = "answer")
-    String answer;
+    private String answer;
 
     @Column(name = "time")
-    Time time;
+    private Timestamp time;
 //    **Time of answer**
 //    public class MyEntity {
 //        ...
@@ -58,11 +65,11 @@ public class Answer {
         this.answer = answer;
     }
 
-    public Time getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

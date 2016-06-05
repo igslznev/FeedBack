@@ -7,11 +7,13 @@
 </head>
 <body>
 
+
+
     <c:choose>
         <c:when test="${interviews.isEmpty()}">There is no interview!</c:when>
         <c:otherwise>
             <c:forEach items="${interviews}" var="interview">
-                <a href="/interview?id=${interview.getIdInterview()}">${interview.getTitle()}</a>
+                <a href="/interviews?id=${interview.getIdInterview()}">${interview.getTitle()}</a>
                 <br>
             </c:forEach>
         </c:otherwise>

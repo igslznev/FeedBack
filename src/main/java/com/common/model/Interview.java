@@ -15,8 +15,8 @@ public class Interview {
     public Interview(String title, String description, List<Question> questions) {
         this.title = title;
         this.description = description;
-        for (Question question:
-             questions) {
+        for (Question question :
+                questions) {
             question.setInterview(this);
         }
     }
@@ -31,10 +31,6 @@ public class Interview {
 
     @Column(name = "description")
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "idUser")
-    private User creator;
 
     @Column(name = "startTime")
     private Date startTime;
@@ -92,13 +88,5 @@ public class Interview {
 
     public void setFinishTime(Date finishTime) {
         this.finishTime = finishTime;
-    }
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
     }
 }
