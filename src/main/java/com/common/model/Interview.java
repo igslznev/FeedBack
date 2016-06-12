@@ -1,7 +1,11 @@
 package com.common.model;
 
+import org.hibernate.annotations.Type;
+
+import org.joda.time.DateTime;
 import javax.persistence.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Set;
 
@@ -33,12 +37,14 @@ public class Interview {
     private String description;
 
     @Column(name = "startTime")
-    private Date startTime;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime startTime;
 
     @Column(name = "finishTime")
-    private Date finishTime;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime finishTime;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idInterview")
     private Set<Question> questions;
 
@@ -74,19 +80,19 @@ public class Interview {
         this.description = description;
     }
 
-    public Date getStartTime() {
+    public DateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(DateTime startTime) {
         this.startTime = startTime;
     }
 
-    public Date getFinishTime() {
+    public DateTime getFinishTime() {
         return finishTime;
     }
 
-    public void setFinishTime(Date finishTime) {
+    public void setFinishTime(DateTime finishTime) {
         this.finishTime = finishTime;
     }
 }

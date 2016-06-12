@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,7 +23,21 @@ public class FeedbackController {
     @RequestMapping("/")
     public String initializeForm(Map model)
     {
-        model.put("interviews", interviewService.getAll());
+        List<Interview> activeInterviews = new ArrayList<Interview>();
+        List<Interview> interviews = interviewService.getAll();
+
+        for (Interview interview:
+             interviews) {
+            if(interview.getStartTime() != null && interview.getFinishTime() != null) {
+                if (interview.getStartTime().isBeforeNow() && interview.getFinishTime().isAfterNow() ) {
+                    activeInterviews.add(interview);
+                }
+            } else {
+                activeInterviews.add(interview);
+            }
+
+        }
+        model.put("interviews", activeInterviews);
         return "feedback";
 
     }
@@ -34,10 +51,8 @@ public class FeedbackController {
 
     }
     @RequestMapping(value = "/successAnswer")
-    public String successAnswerInitialize(/*@RequestParam(value = "id", required = true) Long id, */Map model)
+    public String successAnswerInitialize(Map model)
     {
-        //model.put("interview", interviewService.getById(id));
-
         return "successAnswer";
 
     }

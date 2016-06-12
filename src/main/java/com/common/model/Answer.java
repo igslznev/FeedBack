@@ -1,6 +1,9 @@
 package com.common.model;
 
 
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -10,7 +13,7 @@ public class Answer {
 
     public Answer() {}
 
-    public Answer(Question question, Timestamp time) {
+    public Answer(Question question, DateTime time) {
         this.question = question;
         this.time = time;
     }
@@ -32,14 +35,8 @@ public class Answer {
     private String answer;
 
     @Column(name = "time")
-    private Timestamp time;
-//    **Time of answer**
-//    public class MyEntity {
-//        ...
-//        @Temporal(TemporalType.TIMESTAMP)
-//        private java.util.Date myDate;
-//        ...
-//    }
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    private DateTime time;
 
     public User getUser() {
         return user;
@@ -65,11 +62,11 @@ public class Answer {
         this.answer = answer;
     }
 
-    public Timestamp getTime() {
+    public DateTime getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(DateTime time) {
         this.time = time;
     }
 
